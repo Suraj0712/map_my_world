@@ -93,8 +93,9 @@ $ roslaunch my_robot mapping.launch
 #### 4. Run teleop node
 ```
 $ cd map_my_world/
+$ catkin_make
 $ source devel/setup.bash
-$ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+$ roslaunch my_robot teleop.launch
 ```
 
 ### RViz-Gazebo visualization 
