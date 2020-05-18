@@ -38,7 +38,6 @@
       </geometry>
     </visual>
 
-
     <collision name='back_caster_collision'>
       <origin xyz="-0.15 0 -0.05" rpy=" 0 0 0"/>
       <geometry>
@@ -154,7 +153,7 @@
   </joint>
 
 <!-- adding a Camera -->
-   <link name = 'camera'>
+   <link name = 'camera_link'>
     <pose>0 0 0 0 0 0</pose>
 
     <inertial>
@@ -185,9 +184,20 @@
    <joint type="fixed" name="camera_joint">
         <origin xyz="0.2 0 0" rpy="0 0 0"/>
         <parent link="chassis"/>
-        <child link="camera"/>
+        <child link="camera_link"/>
         <axis xyz="0 1 0"/>
    </joint>
+
+<!-- 'optical' camera link | for RGB-D camera -->
+
+  <joint name="camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.5707 0 -1.5707"/>
+    <parent link="camera_link"/>
+    <child link="camera_link_optical"/>
+  </joint>
+
+  <link name="camera_link_optical">
+  </link>
 
 <!-- adding Hokuyo sensor -->
     <link name = 'hokuyo'>
